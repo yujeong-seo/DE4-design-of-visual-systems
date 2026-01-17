@@ -35,13 +35,13 @@ V_src = R_inv * (V_dest - Tc) + Tc;
 
 For the full code, refer to `forward_mapping.m` and `reverse_mapping.m` in the `/code` folder.
 
-The transformation matrix R and the center of the image Tc is defined before the loop. 
+The transformation matrix `R` and the center of the image `Tc` is defined before the loop. 
 
 Inside the loop, forward mapping sets the source pixel from the loop index and calculate destination pixel based on it, while reverse mapping works the opposite way around.
 
 <p align="center"> <img src="images/image_rotate.png" /> </p>
 
-theta: (pi/6)
+theta: `pi/6`
 
 While both images are rotated properly, the forward mapping (left) resulted in **holes** in some pixels, when zoomed in.
 
@@ -64,8 +64,5 @@ S = [1,     Xshear;
 ```
 
 Shearing is done using **reverse mapping** method, which is proven to be more accurate. For the full code, refer to `Shear.m` in the `/code` folder.
-
-
-Only the transformation matrix is set for shear, going through the same remaining process of taking inverse, and going through the loop of mapping destination to source pixel.
 
 <p align="center"> <img src="images/image_shear.png" /> </p>
