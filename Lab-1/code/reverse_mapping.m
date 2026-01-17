@@ -1,4 +1,4 @@
-function [Out] = inverse_mapping(In, Theta)
+function [Out] = reverse_mapping(In, Theta)
     % Image initialisation
     [rows, cols] = size(In);
     Out = zeros(rows, cols);
