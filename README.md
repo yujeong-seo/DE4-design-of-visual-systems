@@ -9,6 +9,7 @@
 
 ## Lab 2 - 
 🔗 [Lab 2 Part 1](Lab-2/Logbook-1.md)
+
 🔗 [Lab 2 Part 2](Lab-2/Logbook-2.md)
 
 * Concepts

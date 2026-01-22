@@ -4,23 +4,15 @@
 
 ### Task 1 - Find your blind spot
 
-![blind-spot-1a](images/blind-spot-1a.png)
-
-a. Actual Image
-
-![blind-spot-1b](images/blind-spot-1b.png)
-
-b. Perception
+| Actual Image   | Perception   | 
+| :---:          | :---:        | 
+|![blind-spot-1a](images/blind-spot-1a.png) | ![blind-spot-1b](images/blind-spot-1b.png)|
 
 When focusing on ‘X’ with right eye closed, the ‘O’ on the left side simply disappears
 
-![blind-spot-2a](images/blind-spot-2a.png)
-
-a. Actual image
-
-![blind-spot-2b](images/blind-spot-2b.png)
-
-b. Perception
+| Actual Image   | Perception   | 
+| :---:          | :---:        | 
+|![blind-spot-2a](images/blind-spot-2a.png) | ![blind-spot-2b](images/blind-spot-2b.png)|
 
 But with coloured background or patterns, brain completes the space. So the blind spot fills up 
 
@@ -59,9 +51,9 @@ Three effects are combined for the lilac chaser illusion.
 
 ### Task 5 - Brain sees what it expects
 
-![shadow](images/shadow.jpg)
-
-![shadow-color](images/shadow-color.jpg)
+| Shadow Image   | Colour Comparison of A and B | 
+| :---:          | :---:                        | 
+|![shadow](images/shadow.jpg)| ![shadow-color](images/shadow-color.jpg)|
 
 - Blue top looks longer
 - A looks darker
@@ -70,7 +62,7 @@ Three effects are combined for the lilac chaser illusion.
 
 ### Task 6 - The Grid Illusion
 
-[grid-illusion](images/grid.jpg)
+![grid-illusion](images/grid.jpg)
 
 **Observation**
 
@@ -100,7 +92,7 @@ Derives from the lack of visual cues for depth
 
 ### Task 9 - Incomplete Triangles (Kanizsa’s triangle)
 
-[kanizsa-triangle](images/triangle.jpg)
+![kanizsa-triangle](images/triangle.jpg)
 
 See two equilateral triangle
 
