@@ -1,4 +1,4 @@
-# Design for Visual Systems
+# Design of Visual Systems
 
 ## Lab 1 - Introduction
 🔗 [Lab 1 Logbook](Lab-1/Logbook.md)
@@ -8,7 +8,8 @@
 
 
 ## Lab 2 - 
-🔗 [Lab 2 Logbook](Lab-2/Logbook.md)
+🔗 [Lab 2 Part 1](Lab-2/Logbook-1.md)
+🔗 [Lab 2 Part 2](Lab-2/Logbook-2.md)
 
 * Concepts
 
