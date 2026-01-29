@@ -1,10 +1,8 @@
-# Lab 2 - Colour and Perception
-
-## Part 2 - Exploring Colours in MATLAB
+# Part 2 - Exploring Colours in MATLAB
 
 For the full code, refer to `color.m` in the `/code` folder.
 
-### Task 10 - Convert RGB image to grayscale
+## Task 10 - Convert RGB image to grayscale
 
 ![RGB to grayscale](images/task10-grayscale.png)
 
@@ -14,10 +12,18 @@ I = rgb2gray(RGB);
 imshowpair(RGB, I, 'montage');
 ```
 
-![Grayscale Equation](images/grayscale_eq.jpg)
+$$
+I=\begin{pmatrix}
+0.299 & 0.587 & 0.114
+\end{pmatrix} 
+\times 
+\begin{pmatrix}
+R \\ G \\ B
+\end{pmatrix}
+$$
 
 
-### Task 11 - Splitting an RGB image into separate channels
+## Task 11 - Splitting an RGB image into separate channels
 
 ![RGB split](images/task11-rgbsplit.png)
 
@@ -26,8 +32,11 @@ imshowpair(RGB, I, 'montage');
 montage({R, G, B},'Size',[1 3])
 ```
 
+* Examine the information shown on the right side of the Matlab window. Explain their dimensions and data type of the variables RGB, R, G, B and I.
 
-### Task 12 - Map RGB image to HSV space and into separate channels
+
+
+## Task 12 - Map RGB image to HSV space and into separate channels
 
 ![RGB to HSV](images/task12-hsvsplit.png)
 
@@ -37,7 +46,7 @@ HSV = rgb2hsv(RGB);
 montage({H, S, V},'Size',[1 3]);
 ```
 
-### Task 13 - Map RGB image to XYZ space
+## Task 13 - Map RGB image to XYZ space
 
 ![RGB to XYZ](images/task13-rgbtoxyz.png)
 

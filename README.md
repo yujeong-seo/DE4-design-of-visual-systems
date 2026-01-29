@@ -7,12 +7,12 @@
 * Image rotation and shear using mapping equations
 
 
-## Lab 2 - 
+## Lab 2 - Colour and Perception
 🔗 [Lab 2 Part 1](Lab-2/Logbook-1.md)
-
 🔗 [Lab 2 Part 2](Lab-2/Logbook-2.md)
 
-* Concepts
+* Physiological and psychological phenomenons related to the vision
+* Exploration of colour spaces: RGB, Grayscale, HSV, XYZ
 
 
 ## Lab 3 - 

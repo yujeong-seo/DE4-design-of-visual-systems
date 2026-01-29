@@ -1,8 +1,6 @@
-# Lab 2 - Colour and Perception
+# Part 1 - Seeing Colours and Shapes
 
-## Part 1 - Seeing Colours and Shapes
-
-### Task 1 - Find your blind spot
+## Task 1 - Find your blind spot
 
 | Actual Image   | Perception   | 
 | :---:          | :---:        | 
@@ -20,15 +18,15 @@ But with coloured background or patterns, brain completes the space. So the blin
 
 description
 
-### Task 3 - Reverse Colour
+## Task 3 - Reverse Colour
 
 **Why is this happening**
 
 description
 
-### Task 4 - Troxler’s Fading
+## Task 4 - Troxler’s Fading
 
-![troxler-fading](images/troxler-fading.gif)
+<p align="center"> <img src="images/troxler-fading.gif" /> </p>
 
 **Observation**
 
@@ -49,20 +47,24 @@ Three effects are combined for the lilac chaser illusion.
     - In sensory systems, unvarying stimuli soon disappear from our awareness
     - Tactile neurons adapted and start to ignore the unimportant stimulus
 
-### Task 5 - Brain sees what it expects
+## Task 5 - Brain sees what it expects
 
 | Shadow Image   | Colour Comparison of A and B | 
 | :---:          | :---:                        | 
 |![shadow](images/shadow.jpg)| ![shadow-color](images/shadow-color.jpg)|
 
-- Blue top looks longer
-- A looks darker
+<p align="center"> <img src="images/table.jpg" /> </p>
+
+* Blue top looks longer
+* A looks darker
 
 **Why is this happening**
 
-### Task 6 - The Grid Illusion
+description
 
-![grid-illusion](images/grid.jpg)
+## Task 6 - The Grid Illusion
+
+<p align="center"> <img src="images/grid.jpg" /> </p>
 
 **Observation**
 
@@ -72,30 +74,26 @@ Dark dots seem to appear and disappear rapidly at random intersections
 
 Lateral inhibition: Result of a group of receptors which respond to the presentation of stimuli in receptive field 
 
-### Task 7 - Cafe Wall Illusion
+## Task 7 - Cafe Wall Illusion
 
-![cafe-wall-illusion](images/bricks.jpg)
-
-![cafe-wall-illusion](images/cbricks.jpg)
+<p align="center"> <img src="images/bricks.jpg" /> </p> <BR>
+<p align="center"> <img src="images/cbricks.jpg" /> </p>
 
 Black and white image doesn't look parallel. Each line seems to have different angles to each other.
 
 **Why is this happening**
 
-[Irradiation illusion](https://en.wikipedia.org/wiki/Irradiation_illusion): Visual perception where a light area looks larger than of a identical black one. Happens due to the effect of enlarging the image of a light area on the retina.
+* [Irradiation illusion](https://en.wikipedia.org/wiki/Irradiation_illusion): Visual perception where a light area looks larger than of a identical black one. Happens due to the effect of enlarging the image of a light area on the retina.
+* So the illusion disappears when the colours are replaced with lower contrast
 
-So the illusion disappears when the colours are replaced with lower contrast
-
-### Task 8 - Silhouette Illusion
+## Task 8 - Silhouette Illusion
 
 Derives from the lack of visual cues for depth 
 
-### Task 9 - Incomplete Triangles (Kanizsa’s triangle)
+## Task 9 - Incomplete Triangles (Kanizsa’s triangle)
 
-![kanizsa-triangle](images/triangle.jpg)
+<p align="center"> <img src="images/triangle.jpg" /> </p>
 
-See two equilateral triangle
-
-White upside down triangle appear slightly brighter than the background (stands out)
-
-Illusory contour: Evokes the perception of an edge without a luminance or colour change across the edge
+* See two equilateral triangle
+* White upside down triangle appear slightly brighter than the background (stands out)
+* Illusory contour: Evokes the perception of an edge without a luminance or colour change across the edge
