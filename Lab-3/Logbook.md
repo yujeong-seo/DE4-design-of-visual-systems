@@ -87,6 +87,9 @@ imshowpair(f, g, "montage")
 * E: steepness of the function
 
 
+Discuss the result, record the observations
+
+
 ## Task 3 - Contrast Enhancement using Histogram
 ### Plotting the histogram of an image
 
@@ -154,6 +157,8 @@ g_median = medfilt2(f, [7 7], 'zero');
 
 <p align="center"> <img src="images/task5_median.png" /> </p><BR>
 
+Comment on the results
+
 
 ## Task 6 - Sharpening the image with Laplacian, Sobel and Unsharp filters
 
@@ -161,4 +166,11 @@ g_median = medfilt2(f, [7 7], 'zero');
 
 Original, Laplacian, Sobel and Unsharp
 
+_Exploring with various filter kernels, goal is to make the moon photo sharper so that the craters can be observed better_
+
 ## Task 7 - Test yourself Challenges
+### Improve the contrast of a lake and tree image
+
+### Find the edge of the circles in the circles image
+
+### Improve the lighting and colour of the office photo

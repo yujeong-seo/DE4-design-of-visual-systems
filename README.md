@@ -28,6 +28,7 @@
 * Morphological operations
 
 
+<!--
 ## Lab 5 - 
 🔗 [Lab 5 Logbook](Lab-5/Logbook.md)
 
@@ -38,3 +39,4 @@
 🔗 [Lab 6 Logbook](Lab-6/Logbook.md)
 
 * Concepts
+-->
