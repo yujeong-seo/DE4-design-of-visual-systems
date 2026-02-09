@@ -15,16 +15,17 @@
 * Exploration of colour spaces: RGB, Grayscale, HSV, XYZ
 
 
-## Lab 3 - 
+## Lab 3 - Intensity Transformation and Spatial Filtering
 🔗 [Lab 3 Logbook](Lab-3/Logbook.md)
 
-* Concepts
+* Image intensity transformation
+* Filtering: Gaussian, 
 
 
-## Lab 4 - 
+## Lab 4 - Morphological Image Processing
 🔗 [Lab 4 Logbook](Lab-4/Logbook.md)
 
-* Concepts
+* Morphological operations
 
 
 ## Lab 5 - 
