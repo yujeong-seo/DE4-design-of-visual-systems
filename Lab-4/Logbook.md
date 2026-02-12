@@ -217,3 +217,10 @@ ff = imfill(f);
 
 
 ## Challenges
+
+
+<style>
+    table {
+        width: 100%;
+    }
+</style>

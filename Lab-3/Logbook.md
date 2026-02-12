@@ -174,3 +174,10 @@ _Exploring with various filter kernels, goal is to make the moon photo sharper s
 ### Find the edge of the circles in the circles image
 
 ### Improve the lighting and colour of the office photo
+
+
+<style>
+    table {
+        width: 100%;
+    }
+</style>
