@@ -29,7 +29,25 @@ Ax = imdilate (A, Bx);
 
 | Original  | A1    | A2    | Ax    |
 | :---:     | :---: | :---: | :---: |
-<p align="center"> <img src="images/task1-dilation-2.png" /> </p>
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="25%">Original</th>
+      <th width="25%">A1</th>
+      <th width="25%">A2</th>
+      <th width="25%">Ax</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task1-dilation-2.png" />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!--<p align="center"> <img src="images/task1-dilation-2.png" /> </p>-->
 
 Then, the original image is dilated with B1 multiple times.
 
