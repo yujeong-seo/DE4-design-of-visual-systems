@@ -82,7 +82,7 @@ SE.Neighborhood
 
 A disk with radius of 4 is created:
 
-<p align="center"> <img src="images/task1-se.png" width="100px"/> </p>
+<p align="center"> <img src="images/task1-se.png" width="300px"/> </p>
 
 
 ### Erosion Operation
@@ -311,7 +311,7 @@ gthin = bwmorph(BW, 'thin', 12);
 gthin = imcomplement(gthin);
 ```
 
-<p align="center"> <img src="images/task4-line.png" width="100px"/> </p>
+<p align="center"> <img src="images/task4-line.png" width="300px"/> </p>
 
 `n = 12` found after the iteration: where the result shown close to lines. After this thinning operation, reversing (`imcomplement`) is applied to reverse the color back to black lines in white background.
 

@@ -26,6 +26,7 @@
 🔗 [Lab 4 Logbook](Lab-4/Logbook.md)
 
 * Morphological operations: dilation, erosion, open, reconstruction
+* Boundary detection, thinning and thickening, connected components
 
 
 <!--

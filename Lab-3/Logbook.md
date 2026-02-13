@@ -214,7 +214,7 @@ In the purpose for observing the better crater, sobel and unsharp filter generat
 ## Task 7 - Test yourself Challenges
 ### Improve the contrast of a lake and tree image
 
-<p align="center"> <img src="images/task7-1-imhist.png" /> </p><BR>
+<p align="center"> <img src="images/task7-1-imhist.png" width="440px"/> </p><BR>
 
 To map the image using `imadjust`, printed the histogram `imhist(f)` and mapped the range to amplify the focused region. 
 
@@ -290,7 +290,7 @@ g3 = imfilter(g_med2, w_sobel, 0);
 
 ### Improve the lighting and colour of the office photo
 
-<p align="center"> <img src="images/task7-3-imhist.png" /> </p><BR>
+<p align="center"> <img src="images/task7-3-imhist.png" width="440px" /> </p><BR>
 
 Similar approach as to lake image is implemented. Similarly, the image is focused at the low range of intensity, but more spreaded out.
 
