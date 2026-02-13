@@ -31,9 +31,9 @@ Ax = imdilate (A, Bx);
   <thead>
     <tr>
       <th width="25%">Original</th>
-      <th width="25%">A1</th>
-      <th width="25%">A2</th>
-      <th width="25%">Ax</th>
+      <th width="25%">A1 (3x3 disk)</th>
+      <th width="25%">A2 (3x3 ones)</th>
+      <th width="25%">Ax (3x3 diagonal cross)</th>
     </tr>
   </thead>
   <tbody>
@@ -70,7 +70,7 @@ A111 = imdilate(A11, B1);
   </tbody>
 </table>
 
-What happens?
+Repeated dilation cumulates the effect of growing the white regions. As a result, one dilation effectively recovers the broken text, but multiple iterations end up objects to touch and merge into larger blocks.
 
 
 ### Structuring Element
@@ -82,7 +82,7 @@ SE.Neighborhood
 
 A disk with radius of 4 is created:
 
-<p align="center" width="200px"> <img src="images/task1-se.png" /> </p>
+<p align="center"> <img src="images/task1-se.png" width="100px"/> </p>
 
 
 ### Erosion Operation
@@ -118,7 +118,9 @@ E20 = imerode(A,SE20);
   </tbody>
 </table>
 
-**Comment on the results**
+As the size of the sturcturing element grow, only largest and thickest core of the objects remain. Progressively from left to right, it is observable how thin lines is vanished first, then the moderate thickness lines at the edges.
+
+With the largest `SE20` structuring element, only bulky block in the centre is left, but also with reduced size as a result of erosion.
 
 
 ## Task 2 - Morphological Filtering with Open and Close
@@ -165,7 +167,7 @@ fo = imopen(f, SE);
     </tr>
     <tr>
       <td colspan="4" align="center">
-        3<img src="images/task2-diamond-1.png" />
+        3<img src="images/task2-diamond-3.png" />
         <p align="center"> ▲ 3x3 diamond SE </p>
       </td>
     </tr>
@@ -178,18 +180,41 @@ fo = imopen(f, SE);
   </tbody>
 </table>
 
+1. Size difference for same shape (Disk, 3x3 to 5x5)
 
-what happens with other size and shape of structuring element.
+A larger size removes larger noise particles - ended up erasing the part of finger prints. 
 
-**Improve the image fo with a close operation**
+2. Different shapes for same size (Disk. Diamond, Ones)
+
+Disk seems to preserve the form the best. Similarly with diamond. Ones preserves the most elements but in `fed` images (third column), it is seen that some round edge details are lost compared to disk.
 
 
 ### Comparison to Spatial Filter
 
-Comment on the comparison.
+| Gaussian [2 2]   | Gaussian [4 4]   | Gaussian [8 8] |
+| :---:          | :---:        |:---:        |
+|![gauss-2](images/task2-gauss-2.png) | ![gauss-4](images/task2-gauss-4.png)| ![gauss-8](images/task2-gauss-8.png)|
+
+Applying Gaussian filter generates more smooth, gradual result. However, it fails to remove all noises as the filter rather spreads the brightness out, diluting it. It is compared to how morphological filter removes the element smaller than SE completely, successful in reducing noises.
 
 
 ## Task 3 - Boundary Detection
+
+```matlab
+I = imcomplement(I);
+level = graythresh(I);
+BW = imbinarize(I, level);
+```
+
+`graythresh` computes the global threshold level from the grayscale image to divide black and white pixels. 
+
+```matlab
+SE = ones(3,3);
+E = imerode(BW, SE);
+BD = BW - E;
+```
+
+Then the boundary is detected by subtracting the eroded image from BW:
 
 <table width="100%">
   <thead>
@@ -209,8 +234,10 @@ Comment on the comparison.
   </tbody>
 </table>
 
-Comment on the result.
-How can you improve on this result
+While the boundary of the bubbles are clearly captured, the small noises around the bubbles are also captured. 
+
+ To improve further on the result, filtering can be applied before the `BW` operation to remove the small grains that are not main.
+
 
 ## Task 4 - Thinning and Thicknening
 
@@ -284,9 +311,9 @@ gthin = bwmorph(BW, 'thin', 12);
 gthin = imcomplement(gthin);
 ```
 
-<p align="center" width="200px"> <img src="images/task4-line.png" /> </p>
+<p align="center"> <img src="images/task4-line.png" width="100px"/> </p>
 
-n=12 found after the iteration: where the result shown close to lines. imcomplement applied to reverse the color back after the thinning operation
+`n = 12` found after the iteration: where the result shown close to lines. After this thinning operation, reversing (`imcomplement`) is applied to reverse the color back to black lines in white background.
 
 
 ## Task 5 - Connected Components and Labels
@@ -298,6 +325,17 @@ n=12 found after the iteration: where the result shown close to lines. imcomplem
 ```matlab
 CC = bwconncomp(t)
 ```
+
+CC returned by `bwconncomp`, contains the information regarding the number, size, and pixels of the connected components. 
+
+```matlab
+numPixels = cellfun(@numel, CC.PixelIdxList);
+[biggest, idx] = max(numPixels);
+t(CC.PixelIdxList{idx}) = 0;
+```
+
+From the array of several connected elements, the code above finds the largest connect component's index and its pixel coordinates.
+
 
 ## Task 6 - Morphological Reconstruction
 ### Keeping long and thin letters
@@ -337,17 +375,15 @@ ff = imfill(f);
 
 <p align="center"> <img src="images/task6-fill.png" /> </p>
 
-
-
 ## Task 7 - Morphological Operations on Grayscale Images
 
 <table width="100%">
   <thead>
     <tr>
-      <th width="25%">f</th>
-      <th width="25%">gd</th>
-      <th width="25%">ge</th>
-      <th width="25%">gg</th>
+      <th width="25%">Original (f)</th>
+      <th width="25%">Dilate (gd)</th>
+      <th width="25%">Erode (ge)</th>
+      <th width="25%">Boundary Detected(gg)</th>
     </tr>
   </thead>
   <tbody>
@@ -359,17 +395,22 @@ ff = imfill(f);
   </tbody>
 </table>
 
+When applied to grayscale image, below are the observations:
+* Dilated: The image looks brighter overall, and bright regions look thicker. The white bone area seems expanded.
+* Eroded: The image looks darker and thinner. The dark area, noticeable in top centre area, is expanded.
+* Result: Clear outline is created. Bright and thicker line for outer region, and thinner for inner region.
+
 
 ## Challenge
 ### Finding the number of fillings and their sizes
 
 **Instruction**: The grayscale image file 'assets/fillings.tif' is a dental X-ray corrupted by noise. Find how many fills this patient has and their sizes in number of pixels.
 
-Approach: Reconstruct the image to reduce the noise
-Binarise the image so that the fillings are identified
-Use `CC = bwconncomp(t)` to find the connected filling area 
-and refer to datas structure for NumObjects and PixelIdxList
+**Approach**: 
 
+First, polished the image so that the image is clean without noises.
+
+Chose reconstruction to reduce the noise. 
 ```matlab
 f = imread('assets/fillings.tif');
 fc = imcomplement(f);
@@ -378,13 +419,14 @@ SE = strel('disk', 2);
 g = imerode(fc, SE);
 fr = imreconstruct(g, fc);
 fr = imcomplement(fr);
-
-imhist(fr);
 ```
+
+Using `graythresh` in this context did not separated the fillings correctly. Thus, by printing out the histogram, the manual level of `0.9` is identified and used for binarising the image.
 
 <p align="center"> <img src="images/chall-hist.png" /> </p>
 
 ```matlab
+imhist(fr);
 level = 0.9;
 BW = imbinarize(fr, level);
 ```
@@ -400,11 +442,13 @@ BW = imbinarize(fr, level);
   <tbody>
     <tr>
       <td colspan="3" align="center">
-        <img src="images/chall-image.png" />
+        <img src="images/chall-img.png" />
       </td>
     </tr>
   </tbody>
 </table>
+
+Lastly, `CC = bwconncomp(t)` is used to store the data structure for connected filling areas. From this, NumObjects and PixelIdxList are referred to find the number of fillings and size of each.
 
 ```matlab
 CC = bwconncomp(BW);

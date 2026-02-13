@@ -239,10 +239,10 @@ g2 = uint8(255*s);
 <table width="100%">
   <thead>
     <tr>
-      <th width="25%">f</th>
-      <th width="25%">g1</th>
-      <th width="25%">h</th>
-      <th width="25%">Contrast-stretching with E=5 </th>
+      <th width="25%">Original (f)</th>
+      <th width="25%">Contrast adjust (g1)</th>
+      <th width="25%">Histogram equalised (h)</th>
+      <th width="25%">Contrast-stretching (E=5) </th>
     </tr>
   </thead>
   <tbody>
@@ -272,10 +272,10 @@ g3 = imfilter(g_med2, w_sobel, 0);
 <table width="100%">
   <thead>
     <tr>
-      <th width="25%">f</th>
-      <th width="25%">g1</th>
-      <th width="25%">g2</th>
-      <th width="25%">g3</th>
+      <th width="25%">Original (f)</th>
+      <th width="25%">Median + Sobel (g1)</th>
+      <th width="25%">g1 + Laplacian (g2)</th>
+      <th width="25%">Contrast + Median + Sobel (g3)</th>
     </tr>
   </thead>
   <tbody>
@@ -305,10 +305,10 @@ h = histeq(g2,256);
 <table width="100%">
   <thead>
     <tr>
-      <th width="25%">f</th>
-      <th width="25%">g1</th>
-      <th width="25%">g2</th>
-      <th width="25%">h</th>
+      <th width="25%">Original (f)</th>
+      <th width="25%">Gamma correction (g1)</th>
+      <th width="25%">Contrast adjust(g2)</th>
+      <th width="25%">Histogram equalised(h)</th>
     </tr>
   </thead>
   <tbody>

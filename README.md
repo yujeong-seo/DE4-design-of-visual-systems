@@ -25,7 +25,7 @@
 ## Lab 4 - Morphological Image Processing
 🔗 [Lab 4 Logbook](Lab-4/Logbook.md)
 
-* Morphological operations
+* Morphological operations: dilation, erosion, open, reconstruction
 
 
 <!--
