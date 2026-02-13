@@ -87,10 +87,10 @@ imshowpair(f, g, "montage")
 
 <p align="center"> <img src="images/bonescan_contrast.png" /> </p><BR>
 
-* k: often set to the average intensity level 
-* E: steepness of the function
+* _k_: often set to the average intensity level 
+* _E_: steepness of the function
 
-With higher E, the slope gets steeper, acting more like a binary threshold. The application of contrast stretching function amplified the bright section as shown in the image. 
+With higher _E_, the slope gets steeper, acting more like a binary threshold. The application of contrast stretching function amplified the bright section as shown in the image. 
 
 ## Task 3 - Contrast Enhancement using Histogram
 ### Plotting the histogram of an image
@@ -259,6 +259,9 @@ g2 = uint8(255*s);
 
 Initially just applying the sobel filter directly, ended up also intensifying the wooden pattern of the table. Thus, to remove the noise that stands out, medfilt2 and gaussian filters are tested.
 
+* Laplacian filter creates thin, consistent boundary boundary but in double lines. (g2)
+* Contrast enhanced image had better distinction of black and white, yet failed to capture the boundaries of white circles. (g3)
+
 ```matlab
 g_med1 = medfilt2(f, [7 7], 'zero');
 g1 = imfilter(g_med1, w_sobel, 0);
@@ -290,9 +293,9 @@ g3 = imfilter(g_med2, w_sobel, 0);
 
 ### Improve the lighting and colour of the office photo
 
-<p align="center"> <img src="images/task7-3-imhist.png" width="440px" /> </p><BR>
-
 Similar approach as to lake image is implemented. Similarly, the image is focused at the low range of intensity, but more spreaded out.
+
+<p align="center"> <img src="images/task7-3-imhist.png" width="440px" /> </p><BR>
 
 ```matlab
 g1 = imadjust(f, [], [], 0.6);

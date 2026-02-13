@@ -56,9 +56,9 @@ A111 = imdilate(A11, B1);
   <thead>
     <tr>
       <th width="25%">Original</th>
-      <th width="25%">Once</th>
-      <th width="25%">Twice</th>
-      <th width="25%">Triple</th>
+      <th width="25%">A1 (Once)</th>
+      <th width="25%">A11 (Twice)</th>
+      <th width="25%">A111 (Triple)</th>
     </tr>
   </thead>
   <tbody>
@@ -118,9 +118,7 @@ E20 = imerode(A,SE20);
   </tbody>
 </table>
 
-As the size of the sturcturing element grow, only largest and thickest core of the objects remain. Progressively from left to right, it is observable how thin lines is vanished first, then the moderate thickness lines at the edges.
-
-With the largest `SE20` structuring element, only bulky block in the centre is left, but also with reduced size as a result of erosion.
+As the size of the sturcturing element grow, only largest and thickest core of the objects remain. Progressively from left to right, it is observable how thin lines is vanished first, then the moderate thickness lines at the edges. With the largest `SE20` structuring element, only bulky block in the centre is left, but also with reduced size as a result of erosion.
 
 
 ## Task 2 - Morphological Filtering with Open and Close
@@ -174,7 +172,7 @@ fo = imopen(f, SE);
     <tr>
       <td colspan="4" align="center">
         <img src="images/task2-ones-3.png" />
-        <p align="center"> ▲ 3x3 ones SE </p>
+        <p align="center"> ▲ 3x3 ones (square) SE </p>
       </td>
     </tr>
   </tbody>
@@ -182,11 +180,13 @@ fo = imopen(f, SE);
 
 1. Size difference for same shape (Disk, 3x3 to 5x5)
 
-A larger size removes larger noise particles - ended up erasing the part of finger prints. 
+  A larger size removes larger noise particles - ended up erasing the part of finger prints. 
 
-2. Different shapes for same size (Disk. Diamond, Ones)
+2. Different shapes for same size (Disk, Diamond, Square)
 
-Disk seems to preserve the form the best. Similarly with diamond. Ones preserves the most elements but in `fed` images (third column), it is seen that some round edge details are lost compared to disk.
+  Disk seems to preserve the form the best. Diamond filter also creates similar result as to disk. 
+  
+  In square, it is observable that the image lost some thin edge details are lost compared to disk or diamond.
 
 
 ### Comparison to Spatial Filter
@@ -234,9 +234,7 @@ Then the boundary is detected by subtracting the eroded image from BW:
   </tbody>
 </table>
 
-While the boundary of the bubbles are clearly captured, the small noises around the bubbles are also captured. 
-
- To improve further on the result, filtering can be applied before the `BW` operation to remove the small grains that are not main.
+While the boundary of the bubbles are clearly captured, the small noises around the bubbles are also captured. To improve further on the result, filtering can be applied before the `BW` operation to remove the small grains that are not core bubbles.
 
 
 ## Task 4 - Thinning and Thicknening
@@ -262,7 +260,7 @@ for k = 1:5
     g{k} = bwmorph(BW, 'thin', k);
 end
 
-% n = inf. 
+% n = inf: until no further change
 ginf = bwmorph(BW, 'thin', inf);
 
 montage({BW, g{1}, g{2}, g{3}}, 'Size', [1 4]);
@@ -313,7 +311,7 @@ gthin = imcomplement(gthin);
 
 <p align="center"> <img src="images/task4-line.png" width="300px"/> </p>
 
-`n = 12` found after the iteration: where the result shown close to lines. After this thinning operation, reversing (`imcomplement`) is applied to reverse the color back to black lines in white background.
+`n = 12` found after the iteration: where the result shown close to lines. After this thinning operation, reversing of `imcomplement` is applied to reverse the color back to black lines in white background.
 
 
 ## Task 5 - Connected Components and Labels
@@ -396,9 +394,9 @@ ff = imfill(f);
 </table>
 
 When applied to grayscale image, below are the observations:
-* Dilated: The image looks brighter overall, and bright regions look thicker. The white bone area seems expanded.
-* Eroded: The image looks darker and thinner. The dark area, noticeable in top centre area, is expanded.
-* Result: Clear outline is created. Bright and thicker line for outer region, and thinner for inner region.
+* **Dilated** (gd): The image looks brighter overall, and bright regions look thicker. The white bone area seems expanded.
+* **Eroded** (ge): The image looks darker and thinner. The dark area, noticeable in top centre area, is expanded.
+* **Result** (gg): Clear outline is created. Bright and thicker line for outer region, and thinner for inner region.
 
 
 ## Challenge
@@ -421,7 +419,7 @@ fr = imreconstruct(g, fc);
 fr = imcomplement(fr);
 ```
 
-Using `graythresh` in this context did not separated the fillings correctly. Thus, by printing out the histogram, the manual level of `0.9` is identified and used for binarising the image.
+Using `graythresh` in this context did not separated the fillings correctly as teeth were binarised for white with fillings. Thus, by printing out the histogram, the manual level of `0.9` is identified and used as a threshold.
 
 <p align="center"> <img src="images/chall-hist.png" /> </p>
 
@@ -448,7 +446,7 @@ BW = imbinarize(fr, level);
   </tbody>
 </table>
 
-Lastly, `CC = bwconncomp(t)` is used to store the data structure for connected filling areas. From this, NumObjects and PixelIdxList are referred to find the number of fillings and size of each.
+`BW` clearly highlighted only the fillings as white. Lastly, `CC = bwconncomp(t)` is used to store the data structure for connected filling areas. From this, NumObjects and PixelIdxList are referred to find the number of fillings and size of each.
 
 ```matlab
 CC = bwconncomp(BW);

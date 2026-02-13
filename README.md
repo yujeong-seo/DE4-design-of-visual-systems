@@ -25,8 +25,8 @@
 ## Lab 4 - Morphological Image Processing
 🔗 [Lab 4 Logbook](Lab-4/Logbook.md)
 
-* Morphological operations: dilation, erosion, open, reconstruction
-* Boundary detection, thinning and thickening, connected components
+* Morphological operations
+* Dilation, erosion, open, reconstruction, boundary detection, thinning and thickening, connected components
 
 
 <!--
