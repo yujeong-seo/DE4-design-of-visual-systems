@@ -62,6 +62,10 @@ Testing with different gamma values:
 | :---:             | :---:             | 
 |![breast-org](images/breastXray_gamma_low.png) | ![breast-half](images/breastXray_gamma_high.png)|
 
+The image is further testing with different gamma values. It is obvious that lower gamma makes the image brighter, showing more details. In comparison, higher gamma expands the high intensity values while compressing the darks.
+
+Compared to gamma correction, the linear mapping (`g2 = imadjust(f, [0.5 0.75], [0 1])`) discards all pixels below 0.5 to black, and above 0.75 to white. Gamma correction is non linear, preserving the full range of data but affecting the curvature of the mapping. 
+
 
 ## Task 2 - Contrast-stretching transformation
 
@@ -86,9 +90,7 @@ imshowpair(f, g, "montage")
 * k: often set to the average intensity level 
 * E: steepness of the function
 
-
-Discuss the result, record the observations
-
+With higher E, the slope gets steeper, acting more like a binary threshold. The application of contrast stretching function amplified the bright section as shown in the image. 
 
 ## Task 3 - Contrast Enhancement using Histogram
 ### Plotting the histogram of an image
@@ -102,8 +104,12 @@ montage({f, g})
 ```
 
 <p align="center"> <img src="images/task3_f_g_img.png" /> </p><BR>
-<p align="center"> <img src="images/task3_hist.png" /> </p><BR>
-<p align="center"> <img src="images/task3_g_hist.png" /> </p><BR>
+
+| Histogram of f       | Histogram of g      | 
+| :---:             | :---:             | 
+|![f-hist](images/task3_hist.png) | ![g-hist](images/task3_g_hist.png)|
+
+The side by side comparison of histograms clearly highlight how the image after `imadjust` has more spread out intensity over the full range.
 
 
 ### Histogram, PDF and CDF
@@ -125,7 +131,12 @@ h = histeq(g,256);
 ```
 
 <p align="center"> <img src="images/task3_f_g_h_img.png" /> </p><BR>
+
+From the top, left to right, is the image of `f`, imadjusted `g`, histogram equalised `h`. The last image after histogram equalisation shows how the bright and dark areas are further reinforced.
+
 <p align="center"> <img src="images/task3_f_g_h_hist.png" /> </p><BR>
+
+And the figure above shows the histogram of those three images. 
 
 
 ## Task 4 - Noise reduction with lowpass filter
@@ -142,11 +153,9 @@ g_gauss = imfilter(f, w_gauss, 0);
 
 <p align="center"> <img src="images/task4_filter.png" /> </p><BR>
 
+**Exploration of various kernel size and sigma values**
 
-**Comments**
-
-Explore various kernel size and sigma value for these two filters. Comment on the trade-off between the choice of these parameters and the effect on the image.
-
+* A larger kernel size 
 
 ## Task 5 - Median Filtering
 
@@ -171,13 +180,60 @@ _Exploring with various filter kernels, goal is to make the moon photo sharper s
 ## Task 7 - Test yourself Challenges
 ### Improve the contrast of a lake and tree image
 
+<p align="center"> <img src="images/task7-1-imhist.png" /> </p><BR>
+
+Printed the histogram `imhist(f);` and mapped the imadjust to amplify the focused region to 0 1
+
+```matlab
+f = imread('assets/lake&tree.png');
+g1 = imadjust(f, [0.15 0.5], [0 1]);
+h = histeq(g1,256);
+```
+
+f | g1 | h | contrast-stretching with E=5  
+
+<p align="center"> <img src="images/task7-1.png" /> </p><BR>
+
+
 ### Find the edge of the circles in the circles image
+
+Initially just applying the sobel filter ended up highlighting the 원목 무늬 of the table
+medfilt2 and gaussian filter tested
+
+```matlab
+g_med1 = medfilt2(f, [7 7], 'zero');
+g1 = imfilter(g_med1, w_sobel, 0);
+g2 = imfilter(g1, w_lap, 0);
+
+h1 = imadjust(f, [0.1 0.65], [0 1]);
+g_med2 = medfilt2(h1, [7 7], 'zero');
+g3 = imfilter(g_med2, w_sobel, 0);
+```
+
+f | g1 | g2 | g3
+
+<p align="center"> <img src="images/task7-2.png" /> </p><BR>
+
 
 ### Improve the lighting and colour of the office photo
 
+<p align="center"> <img src="images/task7-3-imhist.png" /> </p><BR>
 
-<style>
-    table {
-        width: 100%;
-    }
-</style>
+Similar approach as to lake image implemented. 
+also focused at the lower range, but more spreaded out 
+
+```matlab
+g1 = imadjust(f, [], [], 0.6);
+g2 = imadjust(f, [0.15 0.6], [0 1]);
+
+h = histeq(g2,256);
+
+```
+
+`g1` used gamme correction, where `g2` directly mapped the range 
+
+and printing the image resulted in better improvement for `g2` so histogram equal further applied
+
+f | g1 | g2 | h
+
+<p align="center"> <img src="images/task7-3.png" /> </p><BR>

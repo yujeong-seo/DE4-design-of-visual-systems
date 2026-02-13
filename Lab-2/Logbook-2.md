@@ -46,6 +46,11 @@ HSV = rgb2hsv(RGB);
 montage({H, S, V},'Size',[1 3]);
 ```
 
+**HSV** refers to Hue, Saturation, Value, which provides more user friendly colour selection compared to RGB. H, S, V in other words, are colour angle from the white colour center, amount of saturation, and luminance level, respectively.
+
+And thus, H, S, V extracted grayscale images above represent those levels in each pixel.
+
+
 ## Task 13 - Map RGB image to XYZ space
 
 ![RGB to XYZ](images/task13-rgbtoxyz.png)
@@ -53,3 +58,5 @@ montage({H, S, V},'Size',[1 3]);
 ```matlab
 XYZ = rgb2xyz(RGB);
 ```
+
+**XYZ** system works based on the psychology of human vision. As it is device-independent colour system, the colour does not depend on the specifics of the monitors or camera. 

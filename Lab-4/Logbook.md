@@ -27,9 +27,6 @@ A2 = imdilate (A, B2);
 Ax = imdilate (A, Bx);
 ```
 
-| Original  | A1    | A2    | Ax    |
-| :---:     | :---: | :---: | :---: |
-
 <table width="100%">
   <thead>
     <tr>
@@ -47,7 +44,6 @@ Ax = imdilate (A, Bx);
     </tr>
   </tbody>
 </table>
-<!--<p align="center"> <img src="images/task1-dilation-2.png" /> </p>-->
 
 Then, the original image is dilated with B1 multiple times.
 
@@ -56,9 +52,23 @@ A11 = imdilate(A1, B1);
 A111 = imdilate(A11, B1);
 ```
 
-| Original  | Once      | Twice     | Triple    |
-| :---:     | :---:     | :---:     | :---:     |
-<p align="center"> <img src="images/task1-dilation-twice.png" /> </p>
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="25%">Original</th>
+      <th width="25%">Once</th>
+      <th width="25%">Twice</th>
+      <th width="25%">Triple</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task1-dilation-twice.png" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 What happens?
 
@@ -72,7 +82,7 @@ SE.Neighborhood
 
 A disk with radius of 4 is created:
 
-<p align="center"> <img src="images/task1-se.png" /> </p>
+<p align="center" width="200px"> <img src="images/task1-se.png" /> </p>
 
 
 ### Erosion Operation
@@ -90,9 +100,23 @@ E10 = imerode(A,SE10);
 E20 = imerode(A,SE20);
 ```
 
-| Original  | E2    | E10   | E20   |
-| :---:     | :---: | :---: | :---: |
-<p align="center"> <img src="images/task1-erosion.png" /> </p>
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="25%">Original</th>
+      <th width="25%">E2</th>
+      <th width="25%">E10</th>
+      <th width="25%">E20</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task1-erosion.png" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 **Comment on the results**
 
@@ -111,18 +135,26 @@ fed = imdilate(fe, SE);
 fo = imopen(f, SE);
 ```
 
-| f     | fe    | fed   | fo    |
-| :---: | :---: | :---: | :---: |
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="25%">f</th>
+      <th width="25%">fe</th>
+      <th width="25%">fed</th>
+      <th width="25%">fo</th>
+    </tr>
+  </thead>
+</table>
 <p align="center"> <img src="images/task2-1.png" /> </p>
-<p align="center"> 3x3 disk SE </p>
+<p align="center"> ▲ 3x3 disk SE </p>
 <p align="center"> <img src="images/task2-disk-2.png" /> </p>
-<p align="center"> 4x4 disk SE </p>
+<p align="center"> ▲ 4x4 disk SE </p>
 <p align="center"> <img src="images/task2-disk-3.png" /> </p>
-<p align="center"> 5x5 disk SE </p>
+<p align="center"> ▲ 5x5 disk SE </p>
 <p align="center"> <img src="images/task2-diamond-3.png" /> </p>
-<p align="center"> 3x3 diamond SE </p>
+<p align="center"> ▲ 3x3 diamond SE </p>
 <p align="center"> <img src="images/task2-ones-3.png" /> </p>
-<p align="center"> 3x3 ones </p>
+<p align="center"> ▲ 3x3 ones </p>
 
 what happens with other size and shape of structuring element.
 
@@ -234,11 +266,42 @@ ff = imfill(f);
 <p align="center"> <img src="images/task7-grayscale.png" /> </p>
 
 
-## Challenges
+## Challenge
+### Finding the number of fillings and their sizes
 
+**Instruction**: The grayscale image file 'assets/fillings.tif' is a dental X-ray corrupted by noise. Find how many fills this patient has and their sizes in number of pixels.
 
-<style>
-    table {
-        width: 100%;
-    }
-</style>
+Approach: Reconstruct the image to reduce the noise
+Binarise the image so that the fillings are identified
+Use `CC = bwconncomp(t)` to find the connected filling area 
+and refer to datas structure for NumObjects and PixelIdxList
+
+```matlab
+f = imread('assets/fillings.tif');
+fc = imcomplement(f);
+
+SE = strel('disk', 2);
+g = imerode(fc, SE);
+fr = imreconstruct(g, fc);
+fr = imcomplement(fr);
+
+imhist(fr);
+```
+
+<p align="center"> <img src="images/chall-hist.png" /> </p>
+
+```matlab
+level = 0.9;
+BW = imbinarize(fr, level);
+```
+
+original | fr | BW
+<p align="center"> <img src="images/chall-image.png" /> </p>
+
+```matlab
+CC = bwconncomp(BW);
+FN = CC.NumObjects; % number of fillings
+FS = cellfun(@numel, CC.PixelIdxList); % size of each filling
+```
+
+<p align="center"> <img src="images/chall-result.png" /> </p>

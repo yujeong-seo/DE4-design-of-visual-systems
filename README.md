@@ -18,8 +18,8 @@
 ## Lab 3 - Intensity Transformation and Spatial Filtering
 🔗 [Lab 3 Logbook](Lab-3/Logbook.md)
 
-* Image intensity transformation
-* Filtering: Gaussian, 
+* Image intensity transformation: contrast enhancement, gamma correction, contrast-stretching, histogram
+* Filtering: gaussian, box, median, laplacian, sobel
 
 
 ## Lab 4 - Morphological Image Processing

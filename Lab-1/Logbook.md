@@ -5,13 +5,13 @@
 <p align="center"> <img src="images/rotation_plot.jpg" /> </p>
 <p align="center"> <img src="images/rotation_eq.jpg" /> </p>
 
-### Forward Mapping
 <p align="center"> <img src="images/forward_mapping.jpg" /> </p>
-Works out the destination pixel location using the forward mapping equation.
 
-### Reverse Mapping
+**Forward mapping** Works out the destination pixel location using the forward mapping equation.
+
 <p align="center"> <img src="images/reverse_mapping.jpg" /> </p>
-Works out where each destination pixel came from in the source image. This uses the inverse of the transformation matrix.
+
+**Reverse mapping** works out where each destination pixel came from in the source image. This uses the inverse of the transformation matrix.
 
 ### Results
 **Forward mapping and reverse mapping codes are written and tested at same angle:**

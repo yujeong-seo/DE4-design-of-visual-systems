@@ -6,23 +6,23 @@
 | :---:          | :---:        | 
 |![blind-spot-1a](images/blind-spot-1a.png) | ![blind-spot-1b](images/blind-spot-1b.png)|
 
-When focusing on ‘X’ with right eye closed, the ‘O’ on the left side simply disappears
-
 | Actual Image   | Perception   | 
 | :---:          | :---:        | 
 |![blind-spot-2a](images/blind-spot-2a.png) | ![blind-spot-2b](images/blind-spot-2b.png)|
 
-But with coloured background or patterns, brain completes the space. So the blind spot fills up 
+**First image**: When focusing on ‘X’ with right eye closed, the ‘O’ on the left side simply disappears. The blind spot is the location in the retina without any rods or cones.
 
-**Why is this happening**
+**Second image**: However, with coloured background or patterns, brain completes the space. So the blind spot fills the remaining space - **interpolated** - based on the visual data surrounding the blind spot.
 
-description
 
 ## Task 3 - Reverse Colour
 
-**Why is this happening**
+| Initial Image   | Illusion on white paper   | 
+| :---:          | :---:        | 
+|![flag](images/american_flag.jpg) | ![flag-rev](images/american_flag_rev.jpeg)|
 
-description
+The reason it looks opposite is known as: **negative afterimage** happening after prolong stimulation by looking at the first image. It is supported by opponent-process theory, that states that the colour perception is controlled by opposing systems. So for instnace, when starting too long at green image, it fatigues green photoreceptors, thus creating a weaker signal - opposing magenta as afterimage.
+
 
 ## Task 4 - Troxler’s Fading
 
@@ -55,20 +55,18 @@ Three effects are combined for the lilac chaser illusion.
 
 <p align="center"> <img src="images/table.jpg" /> </p>
 
-* Blue top looks longer
-* A looks darker
+**Observation and Why is this happening**
 
-**Why is this happening**
+* The blue table longer as the brain processes the objects as in three-dimensional space. This is called the concept of **Shepard tables**. The end of the blue table seems further in perspective point, receding into distance. 
+* The block B looks darker than A, but are actually same colors. This happens becuase contextually, human perceive shadows asdarker than other lit regions. 
+* Both illusion refers to how 2D images are perceived as 3D, and brain interprets the image and colour contextually.
 
-description
 
 ## Task 6 - The Grid Illusion
 
 <p align="center"> <img src="images/grid.jpg" /> </p>
 
-**Observation**
-
-Dark dots seem to appear and disappear rapidly at random intersections
+**Observation**: Dark dots seem to appear and disappear rapidly at random intersections
 
 **Why is this happening**
 
@@ -85,10 +83,6 @@ Black and white image doesn't look parallel. Each line seems to have different a
 
 * [Irradiation illusion](https://en.wikipedia.org/wiki/Irradiation_illusion): Visual perception where a light area looks larger than of a identical black one. Happens due to the effect of enlarging the image of a light area on the retina.
 * So the illusion disappears when the colours are replaced with lower contrast
-
-## Task 8 - Silhouette Illusion
-
-Derives from the lack of visual cues for depth 
 
 ## Task 9 - Incomplete Triangles (Kanizsa’s triangle)
 
