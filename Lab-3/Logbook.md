@@ -150,12 +150,28 @@ w_gauss = fspecial('Gaussian', [7 7], 0.5)
 g_box = imfilter(f, w_box, 0);
 g_gauss = imfilter(f, w_gauss, 0);
 ```
-
-<p align="center"> <img src="images/task4_filter.png" /> </p><BR>
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="33%">Original</th>
+      <th width="34%">Box filter</th>
+      <th width="33%">Gaussian filter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="3" align="center">
+        <img src="images/task4_filter.png" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 **Exploration of various kernel size and sigma values**
 
-* A larger kernel size 
+* A larger kernel size creates a wider area for every pixel, ending up in stronger smoothing and more effective noise removal. However, it has risk of blurring details and edges.
+* Sigma value determines the spread of the bell curve. Small sigma behaves like a smaller kernel, focused on the centre, while larger sigma causes more blurring like a standard averaging filter.
+
 
 ## Task 5 - Median Filtering
 
@@ -166,23 +182,41 @@ g_median = medfilt2(f, [7 7], 'zero');
 
 <p align="center"> <img src="images/task5_median.png" /> </p><BR>
 
-Comment on the results
-
+Applying the median filtering successfully removed the noises. At the same time, the edges of shapes in the PCBs are blurred: Observable at small dots and lines.
 
 ## Task 6 - Sharpening the image with Laplacian, Sobel and Unsharp filters
 
-<p align="center"> <img src="images/task6.png" /> </p><BR>
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="25%">Original</th>
+      <th width="25%">Laplacian</th>
+      <th width="25%">Sobel</th>
+      <th width="25%">Unsharp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task6.png" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-Original, Laplacian, Sobel and Unsharp
+* **Laplacian image** creates detection of outer edge of the moon: only teh rapid changes in intensity. The line looks very thin, like a sketch of the fine detail.
+* **Sobel image** has a mostly black image with bright white lines - more clearer than Laplacian - outling the edges and the craters.
+* **Unsharp filter** sharpens the image, making the details more clearer. While preserving the intensity of original image, the edges of the craters are more criper. 
 
-_Exploring with various filter kernels, goal is to make the moon photo sharper so that the craters can be observed better_
+In the purpose for observing the better crater, sobel and unsharp filter generated the best image.
+
 
 ## Task 7 - Test yourself Challenges
 ### Improve the contrast of a lake and tree image
 
 <p align="center"> <img src="images/task7-1-imhist.png" /> </p><BR>
 
-Printed the histogram `imhist(f);` and mapped the imadjust to amplify the focused region to 0 1
+To map the image using `imadjust`, printed the histogram `imhist(f)` and mapped the range to amplify the focused region. 
 
 ```matlab
 f = imread('assets/lake&tree.png');
@@ -190,15 +224,40 @@ g1 = imadjust(f, [0.15 0.5], [0 1]);
 h = histeq(g1,256);
 ```
 
-f | g1 | h | contrast-stretching with E=5  
+The contrast improvement is also attempted with contrast stretching function. To deal with low contrast image, high `E` steepness value is applied.
 
-<p align="center"> <img src="images/task7-1.png" /> </p><BR>
+```matlab
+r = double(f);  % uint8 to double conversion
+k = mean2(r);   % find mean intensity of image
+E = 5;
+s = 1 ./ (1.0 + (k ./ (r + eps)) .^ E);
+g2 = uint8(255*s);
+```
+
+**Results:**
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="25%">f</th>
+      <th width="25%">g1</th>
+      <th width="25%">h</th>
+      <th width="25%">Contrast-stretching with E=5 </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task7-1.png" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
 ### Find the edge of the circles in the circles image
 
-Initially just applying the sobel filter ended up highlighting the 원목 무늬 of the table
-medfilt2 and gaussian filter tested
+Initially just applying the sobel filter directly, ended up also intensifying the wooden pattern of the table. Thus, to remove the noise that stands out, medfilt2 and gaussian filters are tested.
 
 ```matlab
 g_med1 = medfilt2(f, [7 7], 'zero');
@@ -210,30 +269,53 @@ g_med2 = medfilt2(h1, [7 7], 'zero');
 g3 = imfilter(g_med2, w_sobel, 0);
 ```
 
-f | g1 | g2 | g3
-
-<p align="center"> <img src="images/task7-2.png" /> </p><BR>
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="25%">f</th>
+      <th width="25%">g1</th>
+      <th width="25%">g2</th>
+      <th width="25%">g3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task7-2.png" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
 ### Improve the lighting and colour of the office photo
 
 <p align="center"> <img src="images/task7-3-imhist.png" /> </p><BR>
 
-Similar approach as to lake image implemented. 
-also focused at the lower range, but more spreaded out 
+Similar approach as to lake image is implemented. Similarly, the image is focused at the low range of intensity, but more spreaded out.
 
 ```matlab
 g1 = imadjust(f, [], [], 0.6);
 g2 = imadjust(f, [0.15 0.6], [0 1]);
-
 h = histeq(g2,256);
-
 ```
 
-`g1` used gamme correction, where `g2` directly mapped the range 
+`g1` used gamme correction, where `g2` directly mapped the range. The comparison of image figures, showed better improvement in `g2` case. To further improve the bright area, histogram equalisation is then applied.  
 
-and printing the image resulted in better improvement for `g2` so histogram equal further applied
-
-f | g1 | g2 | h
-
-<p align="center"> <img src="images/task7-3.png" /> </p><BR>
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="25%">f</th>
+      <th width="25%">g1</th>
+      <th width="25%">g2</th>
+      <th width="25%">h</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task7-3.png" />
+      </td>
+    </tr>
+  </tbody>
+</table>

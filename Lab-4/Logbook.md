@@ -144,17 +144,40 @@ fo = imopen(f, SE);
       <th width="25%">fo</th>
     </tr>
   </thead>
+    <tbody>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task2-1.png" />
+        <p align="center"> ▲ 3x3 disk SE </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task2-disk-2.png" />
+        <p align="center"> ▲ 4x4 disk SE </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task2-disk-3.png" />
+        <p align="center"> ▲ 5x5 disk SE </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center">
+        3<img src="images/task2-diamond-1.png" />
+        <p align="center"> ▲ 3x3 diamond SE </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task2-ones-3.png" />
+        <p align="center"> ▲ 3x3 ones SE </p>
+      </td>
+    </tr>
+  </tbody>
 </table>
-<p align="center"> <img src="images/task2-1.png" /> </p>
-<p align="center"> ▲ 3x3 disk SE </p>
-<p align="center"> <img src="images/task2-disk-2.png" /> </p>
-<p align="center"> ▲ 4x4 disk SE </p>
-<p align="center"> <img src="images/task2-disk-3.png" /> </p>
-<p align="center"> ▲ 5x5 disk SE </p>
-<p align="center"> <img src="images/task2-diamond-3.png" /> </p>
-<p align="center"> ▲ 3x3 diamond SE </p>
-<p align="center"> <img src="images/task2-ones-3.png" /> </p>
-<p align="center"> ▲ 3x3 ones </p>
+
 
 what happens with other size and shape of structuring element.
 
@@ -168,9 +191,23 @@ Comment on the comparison.
 
 ## Task 3 - Boundary Detection
 
-| I     | BW    | Erosed BW   | Boundary detected    |
-| :---: | :---: | :---: | :---: |
-<p align="center"> <img src="images/task3-boundary.png" /> </p>
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="25%">I</th>
+      <th width="25%">BW</th>
+      <th width="25%">Erosed BW</th>
+      <th width="25%">Boundary detected</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task3-boundary.png" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 Comment on the result.
 How can you improve on this result
@@ -206,21 +243,48 @@ figure;
 montage({g{1}, g{3}, g{5}, ginf}, 'Size', [1 4]);
 ```
 
-| BW    | g1    | g2    | g3    |
-| :---: | :---: | :---: | :---: |
-<p align="center"> <img src="images/task4-g123.png" /> </p>
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="25%">BW</th>
+      <th width="25%">g1</th>
+      <th width="25%">g2</th>
+      <th width="25%">g3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task4-g123.png" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-| g1    | g3    | g5    | ginf    |
-| :---: | :---: | :---: | :---: |
-<p align="center"> <img src="images/task4-g135inf.png" /> </p>
-
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="25%">g1</th>
+      <th width="25%">g3</th>
+      <th width="25%">g5</th>
+      <th width="25%">ginf</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task4-g135inf.png" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ```matlab
 gthin = bwmorph(BW, 'thin', 12);
 gthin = imcomplement(gthin);
 ```
 
-<p align="center"> <img src="images/task4-line.png" /> </p>
+<p align="center" width="200px"> <img src="images/task4-line.png" /> </p>
 
 n=12 found after the iteration: where the result shown close to lines. imcomplement applied to reverse the color back after the thinning operation
 
@@ -246,9 +310,23 @@ fo = imopen(f, se);
 fr = imreconstruct(g, f);
 ```
 
-| f     | g     | fo    | fr    |
-| :---: | :---: | :---: | :---: |
-<p align="center"> <img src="images/task6-mr.png" /> </p>
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="25%">f</th>
+      <th width="25%">g</th>
+      <th width="25%">fo</th>
+      <th width="25%">fr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task6-mr.png" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
 ### Fill the holes in an image
@@ -263,7 +341,23 @@ ff = imfill(f);
 
 ## Task 7 - Morphological Operations on Grayscale Images
 
-<p align="center"> <img src="images/task7-grayscale.png" /> </p>
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="25%">f</th>
+      <th width="25%">gd</th>
+      <th width="25%">ge</th>
+      <th width="25%">gg</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4" align="center">
+        <img src="images/task7-grayscale.png" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
 ## Challenge
@@ -295,8 +389,22 @@ level = 0.9;
 BW = imbinarize(fr, level);
 ```
 
-original | fr | BW
-<p align="center"> <img src="images/chall-image.png" /> </p>
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="33%">Original</th>
+      <th width="34%">Reconstructed</th>
+      <th width="33%">BW</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="3" align="center">
+        <img src="images/chall-image.png" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ```matlab
 CC = bwconncomp(BW);
