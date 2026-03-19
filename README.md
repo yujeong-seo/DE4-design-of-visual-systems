@@ -1,7 +1,7 @@
 # Design of Visual Systems
 
 ## Lab 1 - Introduction
-🔗 [Lab 1 Logbook](Lab-1/Logbook.md)
+🔗 [Lab 1 Logbook](Lab-1/README.md)
 
 * Forward mapping and reverse mapping
 * Image rotation and shear using mapping equations
@@ -16,14 +16,14 @@
 
 
 ## Lab 3 - Intensity Transformation and Spatial Filtering
-🔗 [Lab 3 Logbook](Lab-3/Logbook.md)
+🔗 [Lab 3 Logbook](Lab-3/README.md)
 
 * Image intensity transformation: contrast enhancement, gamma correction, contrast-stretching, histogram
 * Filtering: gaussian, box, median, laplacian, sobel
 
 
 ## Lab 4 - Morphological Image Processing
-🔗 [Lab 4 Logbook](Lab-4/Logbook.md)
+🔗 [Lab 4 Logbook](Lab-4/README.md)
 
 * Morphological operations
 * Dilation, erosion, open, reconstruction, boundary detection, thinning and thickening, connected components
